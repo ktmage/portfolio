@@ -1,10 +1,10 @@
 import { client } from '@/lib/client';
-import { RootObject } from '@/types/index.type';
+import { WorkObject } from '@/types/index.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function Work() {
-	const data = await client.get<RootObject>({ endpoint: 'work' });
+	const data = await client.get<WorkObject>({ endpoint: 'work' });
 
 	return (
 		<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12'>
