@@ -1,10 +1,10 @@
 import { client } from '@/lib/client';
-import { WorkContent } from '@/types/index.type';
+import { BlogContent } from '@/types/index.type';
 import Image from 'next/image';
 import parse from 'html-react-parser';
 
 export default async function Detail({ params }: { params: { id: string } }) {
-	const data = await client.get<WorkContent>({ endpoint: 'work', contentId: params.id });
+	const data = await client.get<BlogContent>({ endpoint: 'blogs', contentId: params.id });
 	const date = new Date(data.updatedAt).toLocaleString();
 
 	return (

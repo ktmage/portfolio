@@ -4,6 +4,7 @@ export default function Header() {
 	const menu = [
 		{ name: 'Home', href: '/' },
 		{ name: 'Work', href: '/work' },
+		{ name: 'Blog', href: '/blog' },
 		{ name: 'About', href: '/about' },
 	];
 

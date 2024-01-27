@@ -1,10 +1,10 @@
-type Thumbnail = {
+type Eyecatch = {
 	url: string;
 	height: number;
 	width: number;
 };
 
-type Content = {
+type WorkContent = {
 	id: string;
 	createdAt: string;
 	updatedAt: string;
@@ -12,14 +12,42 @@ type Content = {
 	revisedAt: string;
 	title: string;
 	content: string;
-	thumbnail: Thumbnail;
+	thumbnail: Eyecatch;
 };
 
-type RootObject = {
-	contents: Content[];
+type WorkObject = {
+	contents: WorkContent[];
 	totalCount: number;
 	offset: number;
 	limit: number;
 };
 
-export type { RootObject, Content, Thumbnail };
+type Category = {
+	id: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+	revisedAt: string;
+	name: string;
+};
+
+type BlogContent = {
+	id: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+	revisedAt: string;
+	title: string;
+	content: string;
+	eyecatch: Eyecatch;
+	category: Category;
+};
+
+type BlogObject = {
+	contents: BlogContent[];
+	totalCount: number;
+	offset: number;
+	limit: number;
+};
+
+export type { WorkObject, WorkContent, Eyecatch, BlogObject, BlogContent, Category };
