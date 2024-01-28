@@ -15,7 +15,7 @@ export default function Header() {
 					href={'/'}
 					className='text-xl btn btn-ghost'
 				>
-					Portfolio
+					<span className='text-2xl font-bold'>サイトの名前</span>
 				</Link>
 			</div>
 			<div className='flex-none'>
