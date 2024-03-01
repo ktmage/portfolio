@@ -14,19 +14,20 @@ export default async function Blog() {
 			{data.contents.map((content, index) => (
 				<div
 					key={index}
-					className='card bg-base-200'
+					className='card max-w-96 max-h-96 bg-base-100 shadow-xl image-full'
 				>
 					<figure>
 						<Image
-							src={content.eyecatch.url} // thumbnailのurlを使用
+							src={content.thumbnail.url}
 							alt={content.title}
-							width={600}
+							width={400}
 							height={400}
 						/>
 					</figure>
 					<div className='card-body'>
 						<h2 className='card-title'>{content.title}</h2>
-						<div className='card-actions'>
+						<p>{content.description}</p>
+						<div className='card-actions justify-end'>
 							<Link
 								className='btn btn-primary'
 								href={'/blog/' + content.id}

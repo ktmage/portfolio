@@ -11,11 +11,11 @@ export default async function Work() {
 			{data.contents.map((content, index) => (
 				<div
 					key={index}
-					className='card bg-base-200'
+					className='card max-w-96 max-h-96 bg-base-100 shadow-xl image-full'
 				>
 					<figure>
 						<Image
-							src={content.thumbnail.url} // thumbnailのurlを使用
+							src={content.thumbnail.url}
 							alt={content.title}
 							width={400}
 							height={400}
@@ -23,7 +23,8 @@ export default async function Work() {
 					</figure>
 					<div className='card-body'>
 						<h2 className='card-title'>{content.title}</h2>
-						<div className='card-actions'>
+						<p>{content.description}</p>
+						<div className='card-actions justify-end'>
 							<Link
 								className='btn btn-primary'
 								href={'/work/' + content.id}

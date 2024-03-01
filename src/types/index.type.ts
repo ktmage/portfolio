@@ -1,4 +1,4 @@
-type Eyecatch = {
+type Thumbnail = {
 	url: string;
 	height: number;
 	width: number;
@@ -12,7 +12,8 @@ type WorkContent = {
 	revisedAt: string;
 	title: string;
 	content: string;
-	thumbnail: Eyecatch;
+	thumbnail: Thumbnail;
+	description: string;
 };
 
 type WorkObject = {
@@ -39,8 +40,9 @@ type BlogContent = {
 	revisedAt: string;
 	title: string;
 	content: string;
-	eyecatch: Eyecatch;
+	thumbnail: Thumbnail;
 	category: Category;
+	description: string;
 };
 
 type BlogObject = {
@@ -50,4 +52,4 @@ type BlogObject = {
 	limit: number;
 };
 
-export type { WorkObject, WorkContent, Eyecatch, BlogObject, BlogContent, Category };
+export type { WorkObject, WorkContent, Thumbnail, BlogObject, BlogContent, Category };
