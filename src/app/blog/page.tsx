@@ -20,7 +20,7 @@ export default async function Blog() {
 						<Image
 							src={content.eyecatch.url} // thumbnailのurlを使用
 							alt={content.title}
-							width={400}
+							width={600}
 							height={400}
 						/>
 					</figure>
