@@ -1,7 +1,12 @@
+'use client';
+
 import './globals.css';
 import { Footer, Header, StaticBackground } from '@/components/ui';
-
+import { usePathname } from 'next/navigation';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+	const pathname = usePathname();
+	const isRoot = pathname === '/';
+
 	return (
 		<html
 			lang='ja'
