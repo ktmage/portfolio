@@ -9,7 +9,7 @@ export default function Header() {
 	];
 
 	return (
-		<header className='navbar min-h-0 h-16 p-0 bg-base-200 sticky top-0 z-50'>
+		<header className='navbar min-h-0 h-16 p-0 bg-base-200 sticky top-0 z-50 shadow-lg'>
 			<div className='flex-1 h-full'>
 				<Link
 					href={'/'}
