@@ -2,14 +2,27 @@
 
 import { useRef, useEffect } from 'react';
 
-export default function Background() {
-	const canvasRef = useRef<HTMLCanvasElement>(null);
+interface DynamicBackgroundProps {
+	config: Config;
+}
 
-	const backgroundImage = {
-		src: '/Concrete_gray.png',
-		width: 1600,
-		height: 800,
+interface Config {
+	image: {
+		src: string;
+		width: number;
+		height: number;
 	};
+	chunk: {
+		widthRange: { max: number; min: number };
+		heightRange: { max: number; min: number };
+		isRandom?: boolean;
+	};
+}
+
+export default function DynamicBackground(props: DynamicBackgroundProps) {
+	const { config } = props;
+
+	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
@@ -19,13 +32,28 @@ export default function Background() {
 		if (!ctx) return;
 
 		const img = new Image();
-		img.src = backgroundImage.src;
+		img.src = config.image.src;
 
 		img.onload = () => {
-			const chunkWidth = 200;
-			const chunkHeight = 200;
-			const numChunksX = backgroundImage.width / chunkWidth;
-			const numChunksY = backgroundImage.height / chunkHeight;
+			let chunkWidth: number;
+			let chunkHeight: number;
+
+			if (config.chunk.isRandom) {
+				chunkWidth = Math.round(
+					Math.random() * (config.chunk.widthRange.max - config.chunk.widthRange.min) +
+						config.chunk.widthRange.min,
+				);
+				chunkHeight = Math.round(
+					Math.random() * (config.chunk.heightRange.max - config.chunk.heightRange.min) +
+						config.chunk.heightRange.min,
+				);
+			} else {
+				chunkWidth = config.chunk.widthRange.max;
+				chunkHeight = config.chunk.heightRange.max;
+			}
+
+			const numChunksX = config.image.width / chunkWidth;
+			const numChunksY = config.image.height / chunkHeight;
 			const chunks = [];
 
 			// チャンクを作成
@@ -56,8 +84,8 @@ export default function Background() {
 			const shuffledChunks = shuffleArray(chunks);
 
 			// キャンバスサイズを設定
-			canvas.width = backgroundImage.width;
-			canvas.height = backgroundImage.height;
+			canvas.width = config.image.width;
+			canvas.height = config.image.height;
 
 			// 並び替えたチャンクを描画
 			shuffledChunks.forEach((chunk, index) => {
@@ -66,7 +94,7 @@ export default function Background() {
 				ctx.drawImage(chunk, x, y);
 
 				// 最初の3つのチャンクの色を反転
-				if (index < 3) {
+				if (index % 3 === 0) {
 					const imageData = ctx.getImageData(x, y, chunkWidth, chunkHeight);
 					const data = imageData.data;
 					for (let i = 0; i < data.length; i += 4) {
