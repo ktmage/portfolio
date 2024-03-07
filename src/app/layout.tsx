@@ -1,11 +1,5 @@
 import './globals.css';
 import { Footer, Header, Background } from '@/components/ui';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-	title: 'Portfolio',
-	description: 'Portfolio',
-};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
