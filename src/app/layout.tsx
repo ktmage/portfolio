@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			lang='ja'
 			data-theme='light'
 		>
-			<body className='flex flex-col min-h-screen bg-base-100'>
+			<body className='flex flex-col min-h-screen bg-base-100 overflow-y-scroll'>
 				<Header />
 				<main className='flex-grow p-10 flex justify-center z-10'>{children}</main>
 				<StaticBackground
