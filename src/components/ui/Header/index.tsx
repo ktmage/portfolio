@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
 	const menu = [
@@ -12,9 +12,23 @@ export default function Header() {
 	];
 
 	const pathname = usePathname();
+	// Y軸のスクロールがかどうかを判定する。
+	const [isTop, setIsTop] = useState(true);
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsTop(window.scrollY === 0);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
 	return (
-		<header className='navbar min-h-0 h-16 p-0 bg-base-200 sticky top-0 z-50 shadow-lg'>
+		<header
+			className={`navbar min-h-0 h-16 p-0 bg-base-200 sticky top-0 z-50 transition ${isTop ? 'shadow-none opacity-100' : 'shadow-lg bg-opacity-40'}`}
+		>
 			<div className='flex-1 h-full'>
 				<Link
 					href={'/'}
