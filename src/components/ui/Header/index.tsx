@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
@@ -12,6 +13,13 @@ export default function Header() {
 	];
 
 	const pathname = usePathname();
+
+	// パスからベースのパスを取得する。
+	const getBasePath = (path: string): string => {
+		const paths = path.split('/');
+		return '/' + paths[1];
+	};
+
 	// Y軸のスクロールがかどうかを判定する。
 	const [isTop, setIsTop] = useState(true);
 	useEffect(() => {
@@ -45,7 +53,7 @@ export default function Header() {
 					>
 						<Link
 							href={item.href}
-							className={`h-full w-24 btn btn-ghost rounded-none no-animation ${pathname === item.href ? 'btn-disabled' : ''}`}
+							className={`h-full w-24 btn btn-ghost rounded-none no-animation ${getBasePath(pathname) === item.href ? 'btn-disabled' : ''}`}
 						>
 							{item.name}
 						</Link>
