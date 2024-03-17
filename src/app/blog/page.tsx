@@ -1,6 +1,5 @@
 import { client } from '@/lib/client';
 import { BlogObject } from '@/types/index.type';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function Blog() {
@@ -10,30 +9,30 @@ export default async function Blog() {
 	});
 
 	return (
-		<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12'>
+		<div className='flex flex-col gap-8 w-full justify-center items-center'>
 			{data.contents.map((content, index) => (
 				<div
 					key={index}
-					className='card max-w-96 max-h-96 bg-base-100 shadow-xl image-full'
+					className='card card-side bg-base-100 shadow-xl rounded-none  w-full md:w-10/12 lg:w-8/12'
 				>
-					<figure>
-						<Image
-							src={content.thumbnail.url}
-							alt={content.title}
-							width={400}
-							height={400}
-						/>
-					</figure>
-					<div className='card-body'>
-						<h2 className='card-title'>{content.title}</h2>
-						<p>{content.description}</p>
-						<div className='card-actions justify-end'>
-							<Link
-								className='btn btn-primary'
-								href={'/blog/' + content.id}
-							>
-								詳細を見る
-							</Link>
+					<div className='flex flex-col flex-grow'>
+						<div className='card-body'>
+							<p className='text-sm'>
+								{new Date(content.publishedAt).toLocaleDateString()}
+							</p>
+							<h2 className='card-title'>{content.title}</h2>
+							<div className='flex gap-1'>
+								{index === 0 && <div className='badge badge-outline'>NEW</div>}
+								<div className='badge badge-outline'>{content.category.name}</div>
+							</div>
+							<div className='card-actions justify-end'>
+								<Link
+									href={`/blog/${content.id}`}
+									className='btn btn-sm'
+								>
+									詳細を表示
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
