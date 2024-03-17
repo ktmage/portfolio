@@ -11,7 +11,8 @@ type WorkContent = {
 	publishedAt: string;
 	revisedAt: string;
 	title: string;
-	content: string;
+	repository: string;
+	about: BlogContent;
 	thumbnail: Thumbnail;
 	description: string;
 };
