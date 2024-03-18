@@ -5,7 +5,6 @@ import Link from 'next/link';
 export default async function Blog() {
 	const data = await client.get<BlogObject>({
 		endpoint: 'blogs',
-		customRequestInit: { cache: 'no-store' },
 	});
 
 	return (

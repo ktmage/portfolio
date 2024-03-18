@@ -7,7 +7,6 @@ import { EosIconsApplicationWindow, MdiGithub } from '@/components/icon';
 export default async function Work() {
 	const data = await client.get<WorkObject>({
 		endpoint: 'work',
-		customRequestInit: { cache: 'no-store' },
 	});
 
 	return (
