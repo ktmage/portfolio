@@ -37,12 +37,12 @@ export default async function Work() {
 							>
 								<MdiGithub className='w-6 h-6' />
 							</Link>
-							<Link
+							{/* <Link
 								href={`/work/${content.id}`}
 								className='btn btn-circle btn-sm'
 							>
 								<EosIconsApplicationWindow className='w-5 h-5' />
-							</Link>
+							</Link> */}
 							<Link
 								href={`/blog/${content.about.id}`}
 								className='btn btn-sm'
