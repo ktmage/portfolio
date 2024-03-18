@@ -34,7 +34,7 @@ export default async function Work() {
 						<div className='card-actions justify-end'>
 							<Link
 								href={content.repository}
-								className='btn btn-circle btn-sm btn-'
+								className='btn btn-circle btn-sm'
 							>
 								<MdiGithub className='w-6 h-6' />
 							</Link>
