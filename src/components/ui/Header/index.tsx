@@ -42,7 +42,7 @@ export default function Header() {
 					href={'/'}
 					className='h-full text-xl btn btn-ghost rounded-none no-animation'
 				>
-					Portfolio
+					ktmage
 				</Link>
 			</div>
 			<ul className='h-full'>
@@ -53,8 +53,8 @@ export default function Header() {
 					>
 						<Link
 							href={item.href}
-							className={`h-full w-24 btn btn-ghost rounded-none no-animation ${getBasePath(pathname) === item.href ? 'btn-disabled' : ''}
-                                        sm: w-16 md:w-24 lg:w-32
+							className={`h-full btn btn-ghost rounded-none no-animation ${getBasePath(pathname) === item.href ? 'btn-disabled' : ''}
+                                        w-16 sm:w-24 md:w-32                             
                             `}
 						>
 							{item.name}
