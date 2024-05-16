@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 export default function Header() {
 	const menu = [
-		{ name: 'Home', href: '/' },
+		// { name: 'Home', href: '/' },
 		{ name: 'Work', href: '/work' },
 		{ name: 'Blog', href: '/blog' },
 		{ name: 'About', href: '/about' },
@@ -53,7 +53,9 @@ export default function Header() {
 					>
 						<Link
 							href={item.href}
-							className={`h-full w-24 btn btn-ghost rounded-none no-animation ${getBasePath(pathname) === item.href ? 'btn-disabled' : ''}`}
+							className={`h-full w-24 btn btn-ghost rounded-none no-animation ${getBasePath(pathname) === item.href ? 'btn-disabled' : ''}
+                                        sm: w-16 md:w-24 lg:w-32
+                            `}
 						>
 							{item.name}
 						</Link>
