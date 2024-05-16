@@ -7,4 +7,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* スクロールバーの非表示 */
+    scrollbar-width: none;
+    /* -ms-overflow-style: none; */
 }
+
+pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+}
+  
